@@ -56,7 +56,7 @@ exports.signin = async (req, res) => {
             id: exituser._id,
             username: exituser.username
         }
-        let token = await jwt.sign(obje, "secret1")
+        let token = await jwt.sign(obje, process.env.JSON_SECRET)
         if (token) {
             req.user = token
             res.cookie("cookie", token)
