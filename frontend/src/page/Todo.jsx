@@ -108,7 +108,7 @@ import axios from "axios";
 import Navbar from "./Navbar";
 import Button from "../component/Button";
 
-import {urle} from "../urle"
+import { urle } from "../urle";
 const Todo = () => {
   const [todoname, setTodoname] = useState("");
   const [state, setState] = useState(true);
@@ -120,13 +120,7 @@ const Todo = () => {
 
   const [deleindex, setdeleindex] = useState("");
 
-
-
-
-
-
-
-  const [setstate1,usesetstate1]=useState(false)
+  const [setstate1, usesetstate1] = useState(false);
   useEffect(() => {
     let cookieValue = localStorage.getItem("cookie");
     setCookie(cookieValue);
@@ -134,6 +128,7 @@ const Todo = () => {
 
   useEffect(() => {
     set_id1(Math.floor(Math.random) * 100);
+    get()
   }, []);
 
   useEffect(() => {
@@ -144,7 +139,7 @@ const Todo = () => {
   async function add() {
     try {
       let res = await axios.post(
-        urle+"create1",
+        urle + "create1",
         { todoname, _id1: _id1 },
         {
           headers: {
@@ -173,7 +168,7 @@ const Todo = () => {
     try {
       console.log(editingIndex);
       let rese = await axios.put(
-        `http://localhost:8000/api/v1/edit1/${editingIndex}`,
+        `${urle}edit1/${editingIndex}`,
         { index: editingIndex, todo: todoname },
         {
           headers: {
@@ -196,11 +191,10 @@ const Todo = () => {
   }
 
   async function get() {
-
     console.log("todo1");
-console.log(rese)
+
     try {
-      let response = await axios.get(urle+"get1", {
+      let response = await axios.get(urle + "get1", {
         headers: {
           Authorization: localStorage.getItem("cookie") || cookie,
         },
@@ -228,14 +222,11 @@ console.log(rese)
 
     setdeleindex(todoindex);
     try {
-      let rese = await axios.delete(
-        "http://localhost:8000/api/v1/delete1/" + todoindex,
-        {
-          headers: {
-            Authorization: cookie,
-          },
-        }
-      );
+      let rese = await axios.delete(urle + "delete1/" + todoindex, {
+        headers: {
+          Authorization: cookie,
+        },
+      });
       console.log(rese);
 
       get();
@@ -244,52 +235,32 @@ console.log(rese)
     }
   }
 
+  async function markasdone(i) {
+    try {
+      let todoindex = todoList[i]._id;
+      console.log(todoindex);
 
+      let rese = await axios.post(urle + "markasdone/" + todoindex, {
+        markasdone: true,
 
+        headers: {
+          Authorization: cookie,
+        },
+      });
 
+      get();
 
-  async function markasdone(i){try{
+      console.log("i is", i);
 
+      console.log(rese);
 
-    let todoindex=todoList[i]._id
-    console.log(todoindex)
-
-
-
-
-
-    let rese=await axios.post("http://localhost:8000/api/v1/markasdone/"+todoindex,{
-      markasdone:true,
-    
-    headers:{
-      Authorization:cookie
+      if (rese.message == "rese") {
+        usesetstate1(true);
+      }
+    } catch (e) {
+      console.log(e);
     }
-  })
-  
-
-
-get()
-
-    console.log("i is",i)
-
-
-
-
-    console.log(rese)
-    
-
-
-
-
-
-    if(rese.message=="rese"){
-      
-
-      usesetstate1(true)
-    }
-  }catch(e){
-    console.log(e)
-  }}
+  }
   return (
     <div>
       <Navbar />
@@ -318,24 +289,37 @@ get()
                 key={i}
                 className="ml-[-8vw]"
                 onClick={(e) => console.log(e.target)}
-                id={item?.markasdone ?"active":""}
+                id={item?.markasdone ? "active" : ""}
               >
                 <div className="bg-blue-800 gap-8 flex w-[80vw] mt-8 p-8 text-[31px] ml-[-10vw] justify-between">
                   <label className="w-[48px]">{i} :</label>
                   <h1 className=" mr-auto">{item.todoname}</h1>
                   <div className="ml-[-21px] gap-8 flex text-[21px]">
-                    {item?.markasdone?"":<button onClick={() => edit(i)}>Edit</button>}
+                    {item?.markasdone ? (
+                      ""
+                    ) : (
+                      <button onClick={() => edit(i)}>Edit</button>
+                    )}
                     <button onClick={() => delete1(i)}>Delete</button>
                     {/* <button>markasdone</button> */}
 
-
-{console.log(setstate1)}
-                    {item?.markasdone ?"":<label className="switch mb-[61px]" onChange={()=>markasdone(i)}>
-                      <input type="checkbox" />
-                      <span className="slider"></span>
-                      
-                    </label>}
-                    {item?.markasdone?"":<button className="ml-[-111px]">markasdone</button>}
+                    {console.log(setstate1)}
+                    {item?.markasdone ? (
+                      ""
+                    ) : (
+                      <label
+                        className="switch mb-[61px]"
+                        onChange={() => markasdone(i)}
+                      >
+                        <input type="checkbox" />
+                        <span className="slider"></span>
+                      </label>
+                    )}
+                    {item?.markasdone ? (
+                      ""
+                    ) : (
+                      <button className="ml-[-111px]">markasdone</button>
+                    )}
                   </div>
                 </div>
               </div>
