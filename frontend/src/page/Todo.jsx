@@ -196,9 +196,11 @@ const Todo = () => {
   }
 
   async function get() {
+
     console.log("todo1");
+console.log(rese)
     try {
-      let response = await axios.get(rese+"get1", {
+      let response = await axios.get(urle+"get1", {
         headers: {
           Authorization: localStorage.getItem("cookie") || cookie,
         },
