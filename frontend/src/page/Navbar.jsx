@@ -55,6 +55,7 @@ console.log("logout")
 }
   return (
     <div>
+      <li>item</li>
     <div className="navediv">
       <Link to="/">
       <div onClick={()=>navigate("/navigate")}>secret</div>
