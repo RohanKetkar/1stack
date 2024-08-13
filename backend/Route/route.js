@@ -28,6 +28,11 @@ router.post("/create1",secret,create1)
 router.put("/edit1/:id",secret,edit1)
 
 
+router.get("/get",(req,res)=>{
+    return res.json({
+        message:"get"
+    })
+})
 
 
 
