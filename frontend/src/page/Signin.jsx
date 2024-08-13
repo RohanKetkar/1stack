@@ -15,6 +15,9 @@ const Signin = () => {
 
     const navigate=useNavigate()
     async function signup(){
+      console.log(urle)
+
+      console.log("https://onestack-2.onrender.com/api/v1/get")
         let rese=await axios.post(urle+"signin",{
                 username:username,
                 password:password

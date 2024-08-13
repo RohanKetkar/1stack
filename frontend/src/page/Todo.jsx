@@ -108,6 +108,7 @@ import axios from "axios";
 import Navbar from "./Navbar";
 import Button from "../component/Button";
 
+import {urle} from "../urle"
 const Todo = () => {
   const [todoname, setTodoname] = useState("");
   const [state, setState] = useState(true);
@@ -143,7 +144,7 @@ const Todo = () => {
   async function add() {
     try {
       let res = await axios.post(
-        "http://localhost:8000/api/v1/create1",
+        urle+"create1",
         { todoname, _id1: _id1 },
         {
           headers: {
@@ -197,7 +198,7 @@ const Todo = () => {
   async function get() {
     console.log("todo1");
     try {
-      let response = await axios.get("http://localhost:8000/api/v1/get1", {
+      let response = await axios.get(rese+"get1", {
         headers: {
           Authorization: localStorage.getItem("cookie") || cookie,
         },
