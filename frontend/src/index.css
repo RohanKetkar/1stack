@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    list-style:none;
+    font-size:21px;
+    background-color:black;
+
+    color:white;
+}
+
+.div{
+display:flex;
+margin-right:21px;
+gap:21px;
+}
+
+.navediv{
+
+
+    display:flex;
+    justify-content:space-between;
+}
+
+
+
+
+input{
+    /* border:1px solid orange; */
+    color:black;
+    outline:none;
+    width:40vw;
+}
+
+input:focus{
+    color:rgb(255, 72, 0);
+}
+
+
+
+
+
+
+
+
+
+#active{
+    color:rgb(18, 235, 18);
+
+    
+
+
+
+
+
+
+font-weight:bold;
+
+}
+
+
+
+
+
+
+
+span{
+    color:rgb(59, 235, 59);
+}
