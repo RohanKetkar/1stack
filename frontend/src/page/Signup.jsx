@@ -7,6 +7,7 @@ import axios from "axios"
 
 import Navbar from "./Navbar"
 
+import { ToastContainer, toast } from 'react-toastify';
 import {urle} from "../urle"
 import {useNavigate} from "react-router-dom"
 const Signup = () => {
@@ -22,8 +23,14 @@ console.log("signup")
                 password:password
         })
 console.log(rese)
+
+
+toast("signup")
+
+
         if(rese.data.success){
           navigate("/signin")
+
         }
         
     }

@@ -81,7 +81,7 @@ useEffect(()=>{
 
         <Route path="/signin" element={<Signin/>}/>
 
-        {cookie1 ? <Route path="/dasboard" element={<Dasboard/>}/>: <Route path="/dasboard" element={<Navbar/>}/>}
+        { <Route path="/dasboard" element={<Dasboard/>}/>}
         
 
 

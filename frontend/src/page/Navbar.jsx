@@ -7,6 +7,7 @@ import Content from "./Content"
 
 import {useNavigate} from "react-router-dom"
 
+import { ToastContainer, toast } from 'react-toastify';
 const Navbar = () => {
   // console.log("rerender")
   const[cookie,setcookie]=useState(false)
@@ -50,6 +51,13 @@ async function logout(){
 console.log("logout")
 
   // navigate("/logout")
+
+
+
+
+
+toast("logout")
+
   setcookie(false)
   navigate("/")
 }
@@ -71,11 +79,9 @@ console.log("logout")
         <li>Signin</li>
         </Link>
       }
-      { cookie?<Link to="/todo">
-        <li onClick={()=>setstate(!state)}>Todo</li>
+      { <Link to="/todo">
+        <li onClick={()=>setstate(!state)} state={state} setstate={setstate}>Todo</li>
         </Link>
-
-        :""
       }
       { cookie?<Link to="/dasboard">
         <li>Dasboard</li>

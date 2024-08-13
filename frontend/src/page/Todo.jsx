@@ -107,7 +107,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "./Navbar";
 import Button from "../component/Button";
-
+import { ToastContainer, toast } from 'react-toastify';
 import { urle } from "../urle";
 const Todo = () => {
   const [todoname, setTodoname] = useState("");
@@ -147,6 +147,7 @@ const Todo = () => {
           },
         }
       );
+      toast("add")
       console.log("res", res);
       setState(!state);
       setTodoname("");
@@ -176,7 +177,7 @@ const Todo = () => {
           },
         }
       );
-
+toast("edit")
       console.log(rese);
       console.log("working");
 
@@ -199,6 +200,13 @@ const Todo = () => {
           Authorization: localStorage.getItem("cookie") || cookie,
         },
       });
+
+
+
+
+
+toast("get")
+
 
       console.log("response", response?.data?.todo?.todo);
       // console.log(response?.data?.todo?.todo);
@@ -229,6 +237,8 @@ const Todo = () => {
       });
       console.log(rese);
 
+toast("delete")
+
       get();
     } catch (e) {
       console.log(e);
@@ -247,7 +257,7 @@ const Todo = () => {
           Authorization: cookie,
         },
       });
-
+toast("markasdone")
       get();
 
       console.log("i is", i);
