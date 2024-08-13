@@ -15,6 +15,8 @@ const Signup = () => {
 
     const navigate=useNavigate()
     async function signup(){
+console.log("signup")
+
         let rese=await axios.post(urle+"signup",{
                 username:username,
                 password:password
