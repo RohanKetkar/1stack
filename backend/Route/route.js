@@ -29,6 +29,7 @@ router.put("/edit1/:id",secret,edit1)
 
 
 router.get("/get",(req,res)=>{
+    console.log("get")
     return res.json({
         message:"get"
     })

@@ -3,12 +3,14 @@ import React from "react";
 import Button from "../component/Button";//component use in page take prop
 import axios from "axios";
 
+import {urle} from "../urle"
 const Main = () => {
   // console.log("axios",axios)
+
   async function onclick() {
     console.log("onclick");
     const res1 = await axios.post(// axios.post is send request to backend example
-      "http://localhost:8000/api/v1/signup",
+      urle+"signup",
       {
         data: { username: "1", password: "1" }, // username:username get from state variable
         headers: {
@@ -21,7 +23,7 @@ const Main = () => {
 
   async function onclick1() {
     console.log("onclick1");
-const res1 = await axios.get("http://localhost:8000/api/v1/get1")
+const res1 = await axios.get(urle+"get1")
 console.log(res1)
   }
   return (

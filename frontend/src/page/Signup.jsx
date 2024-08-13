@@ -7,6 +7,7 @@ import axios from "axios"
 
 import Navbar from "./Navbar"
 
+import {urle} from "../urle"
 import {useNavigate} from "react-router-dom"
 const Signup = () => {
     const [username,setusername]=useState("")
@@ -14,7 +15,7 @@ const Signup = () => {
 
     const navigate=useNavigate()
     async function signup(){
-        let rese=await axios.post("http://localhost:8000/api/v1/signup",{
+        let rese=await axios.post(urle+"signup",{
                 username:username,
                 password:password
         })

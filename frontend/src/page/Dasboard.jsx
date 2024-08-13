@@ -7,7 +7,7 @@ import Navbar from "./Navbar"
 
 import {useEffect} from "react"
 
-
+import {urle} from "../urle"
 import axios from "axios"
 
 import {useState} from "react"
@@ -19,7 +19,7 @@ const Dasboard = () => {
 
 async function get1(){
 try{
-  let rese=await axios.get("http://localhost:8000/api/v1/get1",{
+  let rese=await axios.get(urle+"get1",{
     headers:{
       Authorization:localStorage.getItem("cookie")
     }
