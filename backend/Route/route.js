@@ -2,7 +2,7 @@ const express = require("express")
 
 const router = express.Router()
 
-const {signup,signin,secret1,getusername,create1,get1,edit1,delete1,markasdone} = require("../controller/cont")
+const {signup,signin,secret1,getusername,create1,get1,edit1,delete1,markasdone,secretdata,password} = require("../controller/cont")
 const {secret} = require("../middleware/secret")
 
 router.post("/signup",signup)
@@ -35,7 +35,9 @@ router.get("/get",(req,res)=>{
     })
 })
 
+router.get("/secretedata",secret,secretdata)
 
+router.post("/password",secret,password)
 
 
 

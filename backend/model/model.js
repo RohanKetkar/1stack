@@ -3,8 +3,13 @@ const mongoose = require("mongoose")
 const model = new mongoose.Schema({
     username: String,
     password: String,
+    email:{
+        type:String,
+        required:true,
+    },
     account: {
         enum: ["admin", "user"],
+
         type: String,
     },
     todo: [
@@ -19,6 +24,17 @@ const model = new mongoose.Schema({
             }
             
         }
-    ]
+    ],
+
+
+
+
+
+otp1:{
+
+    type:String,
+    expires:"5m"
+}
+
 })
 module.exports = mongoose.model("model", model)

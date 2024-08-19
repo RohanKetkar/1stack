@@ -10,7 +10,7 @@ exports.secret = async (req, res, next) => {
         console.log("ccokieis", typeof (cookie11))
         console.log("secret",process.env.JSON_SECRET)
         try {
-            console.log("cookie11", cookie11)
+            // console.log("cookie11", req)
             console.log(process.env.JSON_SECRET)
             // let token = cookie11.split("=")[1]
             let cookie1 = jwt.verify(cookie11, process.env.JSON_SECRET)

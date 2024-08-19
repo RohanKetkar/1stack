@@ -3,25 +3,44 @@ const model = require("../model/model")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const mongoose = require("mongoose")
+const { sendmail } = require("../config/nodemailer")
+
+const { sendmail1 } = require("../mail.js")
+
+const otpgenerator = require("otp-generator")
+
 exports.signup = async (req, res) => {
     try {
-        let { username, password } = req.body
-        if (!username || !password) {
+
+        let { username, password,email } = req.body
+        console.log("received",email,username,password)
+        if (!username || !password || !email) {
             return res.json({
                 message: "username is require"
             })
         }
-        let exituser = await model.findOne({ username })
+        let exituser = await model.findOne({ email:email })
+        
+
+
+
+
+
+console.log(exituser)
+
         if (exituser) {
             return res.json({
                 message: "exit"
             })
         }
         let encrpassword = await bcrypt.hash(password, 10)
-        let user = await model.create({ username, password: encrpassword })
+        let user = await model.create({ username, email,password: encrpassword })
+
+console.log(user)
+
         res.cookie("username", user.username)
         return res.json({
-            message: "user is create",
+            message: "userwsqws is create1",
             user: user,
             success: true,
         })
@@ -33,13 +52,13 @@ exports.signup = async (req, res) => {
 
 exports.signin = async (req, res) => {
     try {
-        let { username, password } = req.body
-        if (!username || !password) {
+        let { email, password } = req.body
+        if (!email|| !password) {
             return res.json({
-                message: "username is invalid"
+                message: "email is invalid"
             })
         }
-        let exituser = await model.findOne({ username })
+        let exituser = await model.findOne({ email })
         if (!exituser) {
 
             return res.json({
@@ -54,7 +73,8 @@ exports.signin = async (req, res) => {
         }
         let obje = {
             id: exituser._id,
-            username: exituser.username
+            username: exituser.username,
+            email: exituser.email
         }
         let token = await jwt.sign(obje, process.env.JSON_SECRET)
         if (token) {
@@ -101,6 +121,55 @@ exports.secret1 = async (req, res) => {
 
 exports.secretdata = async (req, res) => {
     try {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        let { otpe } = req.body
+
+        let otp1 = otpgenerator.generate(6, { upperCaseAlphabets: false, lowerCaseAlphabets: false, specialChars: false })
+        let model1 = await model.findByIdAndUpdate({_id:req.user.id},{ otp1: otp1 })
+        let email1 = req.user.email
+        let username = req.user.username
+        let info = await sendmail(email1, sendmail1(email1, username, otp1))
+
+
+
+
+
+console.log(info)
+
+
+
+
+        if (otpe == model1.otp1) {
+            let otp11 = await model.findById({ _id: req.user.id })
+
+
+
+            return res.json({
+
+                message: "otp sent",
+                success: true,
+            })
+
+        }
+
+        return res.json({
+            message: "mail",
+            model1: model1,
+        })
+
     } catch (e) {
         console.log(e)
         return res.send(e)
@@ -108,7 +177,59 @@ exports.secretdata = async (req, res) => {
 }
 
 
+exports.password = async (req, res) => {
+    try {
 
+
+
+
+
+
+        let otp11 = await model.findById({ _id: req.user.id })
+
+        let { password,otpe } = req.body
+        // if (!password || !otpe) {
+        //     return res.json({
+        //         message: "field is require"
+        //     })
+        // }
+
+console.log(otp11.otp1==otpe)
+
+        if (otp11.otp1==otpe) {
+            let encrpassword =await bcrypt.hash(password, 10)
+
+            let model1 = await model.findByIdAndUpdate({_id:req.user.id},{password:encrpassword})
+            return res.json({
+
+
+
+
+
+
+                message: "passwordupdate",
+                success: true
+
+            })
+        }
+
+
+
+
+
+        return res.json({
+
+            message: "invalid",
+            success: false
+
+        })
+
+
+
+    } catch (e) {
+        console.log(e)
+    }
+}
 
 
 
@@ -246,25 +367,25 @@ exports.delete1 = async (req, res) => {
             let rese = await model.findOneAndUpdate({ _id: req.user.id }, {
 
 
-                
-                
-                
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
+
+
+
                 $pull: {
 
 
                     todo: { _id: id }
                 }
-            },{new:true})
+            }, { new: true })
 
 
 
-console.log(id)
+            console.log(id)
 
             console.log("rese", rese)
             if (!rese) {
@@ -285,35 +406,38 @@ console.log(id)
 
 
 
-exports.markasdone=async(req,res)=>{try{
-    let {markasdone}=req.body
-    let {id}=req.params
-    console.log("todoid",id)
-    console.log("markasdone",markasdone)
-    let rese=await model.findOneAndUpdate({_id:req.user.id,"todo._id":id},{
-        $set:{
-            "todo.$.markasdone":markasdone
+exports.markasdone = async (req, res) => {
+    try {
+        let { markasdone } = req.body
+        let { id } = req.params
+        console.log("todoid", id)
+        console.log("markasdone", markasdone)
+        let rese = await model.findOneAndUpdate({ _id: req.user.id, "todo._id": id }, {
+            $set: {
+                "todo.$.markasdone": markasdone
+            }
+        }, { new: true })
+
+
+
+
+        if (!rese) {
+            return res.json({
+                message: "rese is invalid"
+            })
         }
-    },{new:true})
-    
 
 
 
-    if(!rese){
-        return res.json({
-            message:"rese is invalid"
-        })
+
+
+        if (rese) {
+            return res.json({
+                message: "rese",
+                rese: rese,
+            })
+        }
+    } catch (e) {
+        console.log(e)
     }
-
-
-
-
-
-    if(rese){
-        return res.json({
-            message:"rese",
-            rese:rese,
-        })
-    }
-}catch(e){
-    console.log(e)}}
+}
