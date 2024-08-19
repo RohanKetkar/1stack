@@ -9,7 +9,7 @@ import {useNavigate} from "react-router-dom"
 
 
 const Error = () => {
-  const [count, setcount] = useState(5);
+  const [count, setcount] = useState(10);
 const navigate=useNavigate()
   useEffect(() => {
     if (count !=0) {

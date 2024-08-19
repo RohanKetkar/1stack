@@ -84,13 +84,13 @@ setcookie(rese.data.token)
 
       localStorage.setItem("cookie",rese.data.token)
 
-        navigate("/")
+        navigate("/todo")
     }
   return (
     <div>
 
       <Navbar/>
-      {diamond ? <div><div className="loader"></div><h1 className="text-[38px] ml-[10vw] mt-8 bg-red-800 w-[80vw] p-8">We are processing your request || might be network issue</h1></div>:
+      {diamond ? <div><div className="loader"></div><h1 className="text-[28px] ml-[10vw] mt-8 bg-red-800 w-[80vw] p-8">We are processing your request || might be network issue</h1></div>:
     <div className=" bg-blue-800  gap-[81px] w-[96vw] p-8 ml-[1vw]">
       <div className="mb-8 ml-[10vw] text-[31px]">© Signin Form</div>
       <div className="gap-[41px] grid ml-[5vw]">

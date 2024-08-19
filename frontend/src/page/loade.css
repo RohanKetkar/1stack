@@ -27,7 +27,7 @@
 
   /* HTML: <div class="loader"></div> */
 .loade {
-    --s: 61px;
+    --s: 21px;
     --g :51px;  
     
     width: calc(3*(1.353*var(--s) + var(--g)));

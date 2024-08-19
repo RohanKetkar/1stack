@@ -261,11 +261,22 @@ setdiamond(false)
 
     setdeleindex(todoindex);
     try {
+    
+
+
+
+setdiamond(true)
+
       let rese = await axios.delete(urle + "delete1/" + todoindex, {
         headers: {
           Authorization: cookie1,
         },
       });
+
+
+
+setdiamond(false)
+
       console.log(rese);
 
 toast("delete")

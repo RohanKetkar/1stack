@@ -65,15 +65,16 @@ console.log(rese)
 setdiamond(false)
 
 
-toast("signup")
 
 
-        if(rese.data.success){
+
+        if(rese?.data?.success){
           navigate("/signin")
-
+          toast("signup")
         }
         else{
           navigate("/error")
+          toast("error")
         }
         
     }
@@ -85,7 +86,7 @@ toast("signup")
       
       
       
-      diamond ? <div><div className="loade"></div><h1 className="text-[38px] p-8 ml-[10vw] bg-red-800 w-[80vw]">We are processing your signup request || might be network issue</h1></div>:
+      diamond ? <div><div className="loade"></div><h1 className="text-[28px] p-8 ml-[10vw] bg-red-800 w-[80vw]">We are processing your signup request || might be network issue</h1></div>:
       
       <div className=" bg-blue-800 signup gap-[81px] w-[98vw] p-8 m-auto">
       <div className="mb-8 ml-[10vw] text-[31px]">© Signup Form</div>

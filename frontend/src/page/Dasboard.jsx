@@ -13,6 +13,7 @@ import { useContext } from "react";
 
 import { CookieContext } from "./context";
 
+
 const Dasboard = () => {
   const [todo1, settodo1] = useState([]);
 
@@ -20,13 +21,31 @@ const Dasboard = () => {
 
   const { cookie } = useContext(CookieContext);
 
+
+
+
+
+const [diamond,setdiamond]=useState(false)
+
   async function get1() {
     try {
+
+
+
+
+
+
+setdiamond(true)
+
+
       let rese = await axios.get(urle + "get1", {
         headers: {
           Authorization: localStorage.getItem("cookie"),
         },
       });
+
+
+setdiamond(false)
 
       console.log(rese?.data?.todo?.todo[0].markasdone);
 
@@ -61,7 +80,7 @@ console.log(i)
         <Navbar />
       </div>
 
-      {
+      {diamond ? <div className="loader"></div>:
         <div className="bg-blue-400 text-[black] dasboard font-bold flex flex-col justify-center items-center w-[80vw] ml-[5vw]">
           <h1>Dasboard</h1>
           <div>
