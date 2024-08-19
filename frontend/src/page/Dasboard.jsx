@@ -92,6 +92,11 @@ console.log(i)
               completed is todo : <span>{count}</span>
             </h1>
 
+
+
+
+{console.log(todo1.length)}
+
             <h1>
               remaining is todo : <span>{todo1.length - count}</span>
             </h1>

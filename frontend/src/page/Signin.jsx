@@ -29,7 +29,7 @@ import {CookieContext} from "./context"
 
 import "./loade.css"
 const Signin = () => {
-    const [username,setusername]=useState("")
+    const [email,setemail]=useState("")
     const [password,setpassword]=useState("")
 
 
@@ -59,10 +59,10 @@ const [diamond,setdiamond]=useState(false)
 
 
         let rese=await axios.post(urle+"signin",{
-                username:username,
+                email:email,
                 password:password
         })
-        console.log(rese?.data?.exituser?.username)
+        console.log(rese)
 
 
         setdiamond(false)
@@ -95,8 +95,8 @@ setcookie(rese.data.token)
       <div className="mb-8 ml-[10vw] text-[31px]">© Signin Form</div>
       <div className="gap-[41px] grid ml-[5vw]">
         <div>
-          <label>username : </label>
-          <input type="text" onChange={(e)=>setusername(e.target.value)} autoFocus="autofocus" className="w-[80vw]" />
+          <label>email : </label>
+          <input type="text" onChange={(e)=>setemail(e.target.value)} autoFocus="autofocus" className="w-[80vw]" />
         </div>
         <div>
             <label>password : </label>
@@ -106,6 +106,7 @@ setcookie(rese.data.token)
       </div>
       <div className="ml-[10vw]">
         redirect to <Link to="/signup" className="text-[#caf344] text-[31px] hover:text-orange-800">signup</Link>
+        
       </div>
     </div>
 

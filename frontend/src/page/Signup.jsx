@@ -28,10 +28,16 @@ import {useNavigate} from "react-router-dom"
 import "./loade.css"
 
 
-const Signup = () => {
+const Signup = (e) => {
+
+
+
+
+  
+
     const [username,setusername]=useState("")
     const [password,setpassword]=useState("")
-
+    const [email,setemail]=useState("")
 
 
 
@@ -46,7 +52,21 @@ const [diamond,setdiamond]=useState(false)
 
     
     const navigate=useNavigate()
+
+
+
+
+
+
+
+
+
+
+
     async function signup(){
+
+console.log(username,password,email)
+
 console.log("signup")
 
 
@@ -56,10 +76,12 @@ setdiamond(true)
 
 
         let rese=await axios.post(urle+"signup",{
+
                 username:username,
-                password:password
+                email:email,
+                password:password,
         })
-console.log(rese)
+console.log(rese?.data)
 
 
 setdiamond(false)
@@ -97,7 +119,11 @@ setdiamond(false)
             <label>password : </label>
         <input type="password" onChange={(e)=>setpassword(e.target.value)} className="w-[70vw]"/>
         </div>
-        <Button title={"click"} color={"bg-orange-800 w-[50vw]"} onset={()=>signup()}/>
+        <div>
+          <label>email : </label>
+          <input type="text" onChange={(e)=>setemail(e.target.value)} autoFocus="autofocus" className="w-[70vw]  "/>
+        </div>
+        <Button title={"click"} color={"bg-orange-800 w-[50vw]"} onset={(e)=>signup(e)}/>
       </div>
       <div className="ml-[10vw]">
       Redirect to <Link to="/signin" className="text-[#c1f21d] text-[31px] hover:text-orange-800">signin</Link>

@@ -47,6 +47,16 @@ import {CookieContext} from "./context"
 
 import Error from "./Error"
 
+
+
+
+
+
+
+
+
+import Otp from "./Otp"
+
 function Success() {
   const [count, setCount] = useState(0)
   const [cookie1,setcookie1]=useState("")
@@ -135,7 +145,7 @@ useEffect(()=>{
 
 
 <Route path="/error" element={<Error/>}/>
-        
+        <Route path="/Otp" element={<Otp/>}/>
       </Routes>
     </>
 
