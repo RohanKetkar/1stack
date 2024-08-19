@@ -37,7 +37,7 @@ router.get("/get",(req,res)=>{
 
 router.get("/secretedata/:email",secretdata)
 
-router.post("/password",secret,password)
+router.post("/password/:email",password)
 
 
 

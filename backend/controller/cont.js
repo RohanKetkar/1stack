@@ -136,13 +136,13 @@ exports.secretdata = async (req, res) => {
 
 
 
-        let { otpe  } = req.body
+        // let { otpe  } = req.body
 
         let otp1 = otpgenerator.generate(6, { upperCaseAlphabets: false, lowerCaseAlphabets: false, specialChars: false })
         let model1 = await model.findOneAndUpdate({email:req.params.email},{ otp1: otp1 })
         let email1 = req.params.email
-        let username = req.user.username
-        let info = await sendmail(email1, sendmail1(email1, username, otp1))
+        // let username = req.user.username
+        let info = await sendmail(email1, sendmail1(email1, "1", otp1))
 
 
 
@@ -153,7 +153,7 @@ console.log(info)
 
 
 
-        if (otpe == model1.otp1) {
+        if (otp1 == model1.otp1) {
             // let otp11 = await model.findById({ _id: req.user.id })
 
 
@@ -187,15 +187,18 @@ exports.password = async (req, res) => {
 
 let email = req.params.email
 
-        let otp11 = await model.findOne({ email:email })
 
+console.log("email",email)
+
+        let otp11 = await model.findOne({ email:email })
+// console.log(otp11)
         let { password,otpe } = req.body
         // if (!password || !otpe) {
         //     return res.json({
         //         message: "field is require"
         //     })
         // }
-
+console.log(otpe)
 console.log(otp11.otp1==otpe)
 
         if (otp11.otp1==otpe) {
