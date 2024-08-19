@@ -6,7 +6,7 @@ const model = new mongoose.Schema({
     email:{
         type:String,
     },
-    
+
     account: {
         enum: ["admin", "user"],
 
@@ -37,5 +37,5 @@ otp1:{
 }
 
 
-},{ typeKey: '$type' })
+})
 module.exports = mongoose.model("model", model)
