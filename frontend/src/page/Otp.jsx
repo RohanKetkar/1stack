@@ -12,6 +12,8 @@ import axios from "axios"
 const Otp = () => {
 const [otp,setotp]=useState("")
 const [password,setpassword]=useState("")
+const [email,setemail]=useState("")
+const [cookie,setcookie]=useState("")
 
 
 
@@ -23,6 +25,11 @@ const [password,setpassword]=useState("")
 
 
 
+useEffect(()=>{
+
+    setcookie(localStorage.getItem("email"))
+    getotp()
+},[])
 
 
 
@@ -33,9 +40,10 @@ async function getotp(){
     try{
         console.log("rese")
         let rese = await  axios.get(urle+"secretedata",{
-            headers:{
-                "Authorization":localStorage.getItem("cookie")
-            }
+            
+            
+email:cookie
+
         })
         console.log(rese)
     }catch(e){
@@ -64,11 +72,13 @@ async function password1(){
 
 useEffect(()=>{
 
-
+getotp()
 },[])
 
   return (
     <div className="flex flex-col bg-blue-600 justify-center items-center gap-1 text-[21px]">Otp
+    <label>email : </label>
+    <input type="text" onChange={(e)=>setemail(e.target.value)} className="w-[80vw]"/>
 <label>otp : </label>
     <input type="text" onChange={(e)=>setotp(e.target.value)} className="w-[80vw]"/>
     

@@ -84,6 +84,9 @@ setcookie(rese.data.token)
 
       localStorage.setItem("cookie",rese.data.token)
 
+
+localStorage.setItem("email",rese.data.exituser.email)
+
         navigate("/todo")
     }
   return (
