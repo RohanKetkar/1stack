@@ -27,6 +27,26 @@ import Todo from "./Todo"
 
 import Layout from "./Layout"
 
+
+import {useContext} from "react"
+
+
+
+
+
+
+import {CookieContext} from "./context"
+
+
+
+
+
+
+
+
+
+import Error from "./Error"
+
 function Success() {
   const [count, setCount] = useState(0)
   const [cookie1,setcookie1]=useState("")
@@ -38,6 +58,16 @@ function Success() {
 
 
 
+
+
+
+
+
+
+const {cookie} = useContext(CookieContext)
+
+
+console.log("context",cookie)
 
 useEffect(()=>{
 
@@ -91,7 +121,21 @@ useEffect(()=>{
 
 {/* {console.log("count",count)} */}
 
-        {cookie1 ? <Route path="/todo" element={<Todo/>}/>: <Route path="/todo" element={<Signin/>}/>}
+        {cookie ? <Route path="/todo" element={<Todo/>}/>: <Route path="/todo" element={<Signin/>}/>}
+
+
+
+
+
+
+
+
+
+
+
+
+<Route path="/error" element={<Error/>}/>
+        
       </Routes>
     </>
 

@@ -1,0 +1,265 @@
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 60px;
+    aspect-ratio: 1;
+    border: 15px solid #ddd;
+    border-radius: 50%;
+    position: relative;
+    transform: rotate(45deg);
+
+    margin:auto;
+  }
+  .loader::before {
+    content: "";
+    position: absolute;
+    inset: -15px;
+    border-radius: 50%;
+    border: 15px solid #514b82;
+    animation: l18 2s infinite linear;
+  }
+  @keyframes l18 {
+      0%   {clip-path:polygon(50% 50%,0 0,0    0,0    0   ,0    0   ,0    0   )}
+      25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0   ,100% 0   ,100% 0   )}
+      50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+      75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0    100%,0    100%)}
+      100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0    100%,0    0   )}
+  }
+
+  /* HTML: <div class="loader"></div> */
+.loade {
+    --s: 61px;
+    --g :51px;  
+    
+    width: calc(3*(1.353*var(--s) + var(--g)));
+    display: grid;
+    justify-items: end;
+    aspect-ratio: 3;
+    overflow: hidden;
+    --_m: linear-gradient(90deg,#0000,#000 15px calc(100% - 15px),#0000);
+    -webkit-mask: var(--_m);
+            mask: var(--_m);
+
+
+
+
+
+
+
+margin:auto;
+
+font-size:61px;
+margin-top:61px;
+  }
+  .loade::before { 
+    content: "";
+    width: 200%;
+    background:
+      linear-gradient(90deg,#ff1818 50%,#0000 0),
+      conic-gradient(from -90deg at var(--s) calc(0.353*var(--s)),
+        #fff 135deg,#666 0 270deg,#aaa 0); 
+    background-blend-mode: multiply;
+    --_m:
+      linear-gradient(to bottom right,
+         #0000 calc(0.25*var(--s)),#000 0 calc(100% - calc(0.25*var(--s)) - 1.414*var(--g)),#0000 0),
+      conic-gradient(from -90deg at right var(--g) bottom var(--g),#000 90deg,#0000 0);
+    -webkit-mask: var(--_m);
+            mask: var(--_m);
+    background-size:   calc(100%/3) 100%, calc(100%/6) 100%;
+    -webkit-mask-size: calc(100%/6) 100%;
+            mask-size: calc(100%/6) 100%;
+    -webkit-mask-composite: source-in;
+            mask-composite: intersect;
+    animation: l10 1s infinite linear;
+  }
+  @keyframes l10 {
+    to {transform:translate(calc(100%/3))}
+  }
+
+  h1{
+    margin-left:61px;
+  }
+@media only screen and (max-width:800px){
+
+
+
+
+
+
+    .todo{
+        font-size:18px;
+    
+
+
+
+
+
+
+
+background-color:black;
+
+    }
+    .div{
+        background-color:rgb(63, 124, 216);
+
+
+
+
+
+overflow-x:hidden;
+
+    }
+
+
+
+
+.div1{
+    
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+
+
+
+
+.slider{
+
+    display:none;
+}
+
+
+
+
+
+.maindiv{
+
+background-color:black;
+margin-left:20vw;
+
+
+
+
+
+
+
+
+
+.label{
+    display:none;
+}
+
+}
+
+.divq{
+
+    margin-left:-8vw;
+    /* width:96vw; */
+
+}
+
+
+
+
+
+
+
+.cont{
+
+    font-size:31px;
+    margin-left:8vw;
+}
+
+
+
+
+
+
+.dasboard{
+
+    font-size:21px;
+    margin-top:10vh;
+}
+
+
+}
+
+
+@media only screen and (min-width:800px){
+
+    .div{
+        background-color:blue;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+font-size:28px;
+
+
+        
+    }
+
+
+
+
+.div1{
+
+    font-size:18px;
+    gap:11px;
+
+
+
+
+
+
+display:flex;
+
+
+}
+
+
+
+
+
+.button{
+
+    margin-left:-61px;
+}
+
+.divq{
+    margin-left:18vw;
+}
+
+
+
+
+
+.cont{
+
+    font-size:56px;
+    margin-left:8vw;
+}
+
+
+
+
+
+.dasboard{
+
+    font-size:41px;
+    margin-top:10vh;
+}
+
+}

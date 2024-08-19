@@ -5,10 +5,14 @@ import './index.css'
 import {BrowserRouter,Routes,Route} from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
-ReactDOM.createRoot(document.getElementById('root')).render(
+import {Cookiecontextprovider} from "./page/context"
+
+  ReactDOM.createRoot(document.getElementById('root')).render(
 
   <BrowserRouter>
+  <Cookiecontextprovider>
     <Routes><Route path="*" element={<App />}/></Routes>
     <ToastContainer />
+    </Cookiecontextprovider>
   </BrowserRouter>
 )

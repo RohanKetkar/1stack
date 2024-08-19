@@ -7,14 +7,35 @@ import Content from "./Content"
 
 import {useNavigate} from "react-router-dom"
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import {useContext} from "react"
+
+import {CookieContext} from "./context"
 import { ToastContainer, toast } from 'react-toastify';
 const Navbar = () => {
   // console.log("rerender")
-  const[cookie,setcookie]=useState(false)
+  const[cookie1,setcookie1]=useState(false)
 const[state,setstate]=useState(true)
 
 
-
+const {cookie,setcookie} = useContext(CookieContext)
 
 
 
@@ -29,13 +50,13 @@ const[state,setstate]=useState(true)
   const navigate=useNavigate()
   useEffect(()=>{
 
-let cookie = localStorage.getItem("cookie")
-  if(cookie){
-    setcookie(true)
+let cookie1 = localStorage.getItem("cookie")
+  if(cookie1){
+    setcookie1(true)
   }else{
-    setcookie(false)
+    setcookie1(false)
   }
-},[cookie])
+},[cookie1])
 useEffect(()=>{
   setstate(!state)
 },[])
@@ -46,7 +67,7 @@ useEffect(()=>{
 
 async function logout(){
 
-  let cookie =  localStorage.removeItem("cookie")
+  let cookie1 =  localStorage.removeItem("cookie")
   let username=localStorage.removeItem("username")
 console.log("logout")
 
@@ -63,14 +84,14 @@ toast("logout")
 }
   return (
     <div>
-      <li className="text-white">item</li>
+      
 
-    <div className="navediv">
+    <div className="navediv text-[18px]">
       <Link to="/">
       <div onClick={()=>navigate("/navigate")}>secret</div>
 
       </Link>
-      <div className="div">
+      <div className="div bg-black">
         {cookie ?<div onClick={()=>logout()}>Logout</div>:<Link to="/signup">
         <li>Signup</li>
         </Link>
@@ -79,9 +100,9 @@ toast("logout")
         <li>Signin</li>
         </Link>
       }
-      { <Link to="/todo">
+      {cookie? <Link to="/todo">
         <li onClick={()=>setstate(!state)} state={state} setstate={setstate}>Todo</li>
-        </Link>
+        </Link>:""
       }
       { cookie?<Link to="/dasboard">
         <li>Dasboard</li>
