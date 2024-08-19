@@ -31,7 +31,7 @@ const Otp = () => {
       setdiamond(true);
       console.log("rese");
       let rese = await axios.get(
-        urle + "secretedata" + "/" + cookie ||
+        "http://localhost:8000/api/v1/" + "secretedata" + "/" + cookie ||
           localStorage.getItem("email")
       );
       console.log(rese);
