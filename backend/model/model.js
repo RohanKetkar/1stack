@@ -36,5 +36,6 @@ otp1:{
     expires:"5m"
 }
 
-})
+
+},{ typeKey: '$type' })
 module.exports = mongoose.model("model", model)

@@ -27,7 +27,8 @@ const [cookie,setcookie]=useState("")
 
 useEffect(()=>{
 
-    setcookie(localStorage.getItem("email"))
+    let email1=localStorage.getItem("email")
+    setcookie(email1)
     getotp()
 },[])
 
@@ -37,12 +38,14 @@ useEffect(()=>{
 
 async function getotp(){
     
+    console.log("cookie",cookie)
     try{
         console.log("rese")
         let rese = await  axios.get(urle+"secretedata",{
             
+   
             
-email:cookie
+email:cookie || localStorage.getItem("email")
 
         })
         console.log(rese)
