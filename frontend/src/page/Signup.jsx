@@ -70,11 +70,9 @@ setdiamond(false)
 
         if(rese?.data?.success){
           navigate("/signin")
-          toast("signup")
         }
-        else{
+        if(rese?.data?.message=="exit"){
           navigate("/error")
-          toast("error")
         }
         
     }

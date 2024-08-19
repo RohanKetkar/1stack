@@ -78,7 +78,7 @@ const [diamond,setdiamond]=useState(false)
 setcookie(rese.data.token)
 
 
-          toast("signin")
+          
         }
 
 

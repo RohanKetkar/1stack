@@ -178,7 +178,6 @@ setdiamond(true)
       );
 
 setdiamond(false)
-      toast("add")
       console.log("res", res);
       setState(!state);
       setTodoname("");
@@ -208,7 +207,6 @@ setdiamond(false)
           },
         }
       );
-toast("edit")
       console.log(rese);
       console.log("working");
 
@@ -279,8 +277,6 @@ setdiamond(false)
 
       console.log(rese);
 
-toast("delete")
-
       get();
     } catch (e) {
       console.log(e);
@@ -301,7 +297,6 @@ toast("delete")
         },
       });
       setdiamond(false)
-toast("markasdone")
       get();
 
       console.log("i is", i);

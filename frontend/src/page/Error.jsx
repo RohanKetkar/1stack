@@ -16,21 +16,10 @@ const navigate=useNavigate()
       const timer = setInterval(() => {
         setcount(prevCount => prevCount - 1);
       }, 1000); // increment every 1 second
-
-
-
-
-
-
-
-
-
-navigate("/signup")
-
-
       return () => clearInterval(timer); // cleanup interval on unmount or count update
 
     }
+    navigate("/signup")
   }, [count]);
   return (
     <div className="w-[100vw] text-[21px] flex flex-col justify-center items-center h-[80vh] ml-8">
