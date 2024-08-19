@@ -5,8 +5,8 @@ const model = new mongoose.Schema({
     password: String,
     email:{
         type:String,
-        required:true,
     },
+    
     account: {
         enum: ["admin", "user"],
 
