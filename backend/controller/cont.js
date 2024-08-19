@@ -85,7 +85,8 @@ exports.signin = async (req, res) => {
                 message: "token is create",
                 token: token,
                 success: true,
-                exituser: exituser
+                exituser: exituser,
+                email:email
             })
         } else {
             return res.json({
@@ -135,11 +136,11 @@ exports.secretdata = async (req, res) => {
 
 
 
-        let { otpe } = req.body
+        let { otpe  } = req.body
 
         let otp1 = otpgenerator.generate(6, { upperCaseAlphabets: false, lowerCaseAlphabets: false, specialChars: false })
-        let model1 = await model.findByIdAndUpdate({_id:req.user.id},{ otp1: otp1 })
-        let email1 = req.user.email
+        let model1 = await model.findOneAndUpdate({email:req.body},{ otp1: otp1 })
+        let email1 = req.body
         let username = req.user.username
         let info = await sendmail(email1, sendmail1(email1, username, otp1))
 
@@ -185,7 +186,7 @@ exports.password = async (req, res) => {
 
 
 
-        let otp11 = await model.findById({ _id: req.user.id })
+        let otp11 = await model.findOne({ email:email })
 
         let { password,otpe } = req.body
         // if (!password || !otpe) {
@@ -199,7 +200,7 @@ console.log(otp11.otp1==otpe)
         if (otp11.otp1==otpe) {
             let encrpassword =await bcrypt.hash(password, 10)
 
-            let model1 = await model.findByIdAndUpdate({_id:req.user.id},{password:encrpassword})
+            let model1 = await model.findOneAndUpdate({email:email},{password:encrpassword})
             return res.json({
 
 
