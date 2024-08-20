@@ -13,7 +13,7 @@ exports.signup = async (req, res) => {
     try {
 
         let { username, password,email } = req.body
-        console.log("received",email,username,password)
+
         if (!username || !password || !email) {
             return res.json({
                 message: "username is require"
@@ -26,7 +26,7 @@ exports.signup = async (req, res) => {
 
 
 
-console.log(exituser)
+
 
         if (exituser) {
             return res.json({
@@ -36,7 +36,7 @@ console.log(exituser)
         let encrpassword = await bcrypt.hash(password, 10)
         let user = await model.create({ username, email,password: encrpassword })
 
-console.log(user)
+
 
         res.cookie("username", user.username)
         return res.json({
@@ -45,7 +45,7 @@ console.log(user)
             success: true,
         })
     } catch (e) {
-        console.log(e)
+
         return res.send(e)
     }
 }
@@ -80,7 +80,7 @@ exports.signin = async (req, res) => {
         if (token) {
             req.user = token
             res.cookie("cookie", token)
-            console.log("cookie is set", token)
+
             return res.json({
                 message: "token is create",
                 token: token,
@@ -94,7 +94,7 @@ exports.signin = async (req, res) => {
             })
         }
     } catch (e) {
-        console.log(e)
+
         return res.send(e)
     }
 }
@@ -107,7 +107,7 @@ exports.secret1 = async (req, res) => {
             message: "secret"
         })
     } catch (e) {
-        console.log(e)
+
     }
 }
 
@@ -148,7 +148,7 @@ exports.secretdata = async (req, res) => {
 
 
 
-console.log(info)
+
 
 
 
@@ -172,7 +172,7 @@ console.log(info)
         })
 
     } catch (e) {
-        console.log(e)
+
         return res.send(e)
     }
 }
@@ -188,18 +188,18 @@ exports.password = async (req, res) => {
 let email = req.params.email
 
 
-console.log("email",email)
+
 
         let otp11 = await model.findOne({ email:email })
-// console.log(otp11)
+
         let { password,otpe } = req.body
         // if (!password || !otpe) {
         //     return res.json({
         //         message: "field is require"
         //     })
         // }
-console.log(otpe)
-console.log(otp11.otp1==otpe)
+
+
 
         if (otp11.otp1==otpe) {
             let encrpassword =await bcrypt.hash(password, 10)
@@ -232,7 +232,7 @@ console.log(otp11.otp1==otpe)
 
 
     } catch (e) {
-        console.log(e)
+
     }
 }
 
@@ -259,7 +259,7 @@ exports.create1 = async (req, res) => {
         let { todoname, _id1 } = req.body
         let todoitem = { todoname, _id1 }
 
-        console.log({ todoitem })
+
         let user = await model.findById(req.user.id)
 
         if (!user) {
@@ -275,7 +275,7 @@ exports.create1 = async (req, res) => {
         })
     } catch (e) {
 
-        console.log(e)
+
     }
 }
 
@@ -300,7 +300,7 @@ exports.get1 = async (req, res) => {
 
     } catch (e) {
 
-        console.log(e)
+
     }
 }
 
@@ -309,14 +309,14 @@ exports.get1 = async (req, res) => {
 exports.edit1 = async (req, res) => {
     try {
         //     let{todoid,userid}=req.params
-        //     console.log("id",todoid)
+
         let { todo } = req.body
         let { id } = req.params
 
         let id1 = new mongoose.Types.ObjectId(id)
-        { console.log("index", id1) }
+
         let id11 = new mongoose.Types.ObjectId(1)
-        // {console.log(todo)}
+
         // const userObjectId = mongoose.Types.ObjectId(userId);
         const todoObjectId = new mongoose.Types.ObjectId(id);
 
@@ -334,9 +334,9 @@ exports.edit1 = async (req, res) => {
                 message: "rese is invalid"
             })
         }
-        console.log("todo._id")
 
-        console.log("rese", rese)
+
+
         return res.json({
             message: "edit1",
             rese: rese,
@@ -344,7 +344,7 @@ exports.edit1 = async (req, res) => {
             todo: todo
         })
     } catch (e) {
-        console.log(e)
+
     }
 }
 
@@ -366,7 +366,7 @@ exports.delete1 = async (req, res) => {
     try {
 
         let { id } = req.params
-        console.log("todoindex", id)
+
         // let id=new mongoose.Types.ObjectId("66b1ca931c061e32431eb8b5")
         if (req.user.id) {
             let rese = await model.findOneAndUpdate({ _id: req.user.id }, {
@@ -390,9 +390,9 @@ exports.delete1 = async (req, res) => {
 
 
 
-            console.log(id)
 
-            console.log("rese", rese)
+
+
             if (!rese) {
                 return res.json({
                     message: "rese is invalid"
@@ -404,7 +404,7 @@ exports.delete1 = async (req, res) => {
             })
         }
     } catch (e) {
-        console.log(e)
+
     }
 }
 
@@ -415,8 +415,8 @@ exports.markasdone = async (req, res) => {
     try {
         let { markasdone } = req.body
         let { id } = req.params
-        console.log("todoid", id)
-        console.log("markasdone", markasdone)
+
+
         let rese = await model.findOneAndUpdate({ _id: req.user.id, "todo._id": id }, {
             $set: {
                 "todo.$.markasdone": markasdone
@@ -443,6 +443,6 @@ exports.markasdone = async (req, res) => {
             })
         }
     } catch (e) {
-        console.log(e)
+
     }
 }
