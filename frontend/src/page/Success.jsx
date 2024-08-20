@@ -77,7 +77,6 @@ function Success() {
 const {cookie} = useContext(CookieContext)
 
 
-console.log("context",cookie)
 
 useEffect(()=>{
 
@@ -91,7 +90,6 @@ useEffect(()=>{
 
 useEffect(()=>{
 
-  console.log("apprender")
 let cookie=localStorage.getItem("cookie")
 if(cookie){
   setCount(true)
@@ -129,7 +127,6 @@ useEffect(()=>{
 
 
 
-{/* {console.log("count",count)} */}
 
         {cookie ? <Route path="/todo" element={<Todo/>}/>: <Route path="/todo" element={<Signin/>}/>}
 

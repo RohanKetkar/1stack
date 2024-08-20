@@ -26,20 +26,15 @@ const Otp = () => {
   }, []);
 
   async function getotp() {
-    console.log("cookie", localStorage.getItem("email"));
     try {
       setdiamond(true);
-      console.log("rese");
       let rese = await axios.get(
         "http://localhost:8000/api/v1/" + "secretedata" + "/" + cookie ||
           localStorage.getItem("email")
       );
-      console.log(rese);
-      console.log(urle + "secretedata" + "/" + cookie);
 
       setdiamond(false);
     } catch (e) {
-      console.log(e);
     }
   }
 
@@ -54,13 +49,11 @@ const Otp = () => {
           password: password,
         }
       );
-      console.log(rese);
 
       setdiamond(false);
 
       navigate("/signin");
     } catch (e) {
-      console.log(e);
     }
   }
 

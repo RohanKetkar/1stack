@@ -30,7 +30,6 @@ import {useContext} from "react"
 import {CookieContext} from "./context"
 import { ToastContainer, toast } from 'react-toastify';
 const Navbar = () => {
-  // console.log("rerender")
   const[cookie1,setcookie1]=useState(false)
 const[state,setstate]=useState(true)
 
@@ -60,7 +59,6 @@ let cookie1 = localStorage.getItem("cookie")
 useEffect(()=>{
   setstate(!state)
 },[])
-// console.log("state",state)
 
 
 
@@ -69,7 +67,6 @@ async function logout(){
 
   let cookie1 =  localStorage.removeItem("cookie")
   let username=localStorage.removeItem("username")
-console.log("logout")
 
   // navigate("/logout")
 

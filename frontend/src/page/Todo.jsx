@@ -38,7 +38,6 @@ const Todo = () => {
   }, []);
 
   useEffect(() => {
-    // console.log("editingIndex",editingIndex)
     let cookieValue = localStorage.getItem("cookie");
     setCookie1(cookieValue);
   }, []);
@@ -57,27 +56,22 @@ const Todo = () => {
       );
 
       setdiamond(false);
-      console.log("res", res);
       setState(!state);
       setTodoname("");
       get();
     } catch (e) {
-      console.log(e);
     }
   }
 
   async function edit(index) {
     const todoToEdit = todoList[index];
-    // console.log("todoToEdit",todoToEdit)
     setTodoname(todoToEdit.todoname);
     setEditingIndex(todoToEdit._id);
-    // console.log("editingindex",editingIndex)
   }
 
   async function update() {
     try {
       setdiamond(true);
-      console.log(editingIndex);
       let rese = await axios.put(
         `${urle}edit1/${editingIndex}`,
         { index: editingIndex, todo: todoname },
@@ -90,21 +84,16 @@ const Todo = () => {
 
       setdiamond(false);
 
-      console.log(rese);
-      console.log("working");
 
-      // console.log(editingIndex)
       setState(!state);
       setTodoname("");
       setEditingIndex(null);
       get();
     } catch (e) {
-      console.log(e);
     }
   }
 
   async function get() {
-    console.log("todo1");
 
     try {
       setdiamond(true);
@@ -115,25 +104,18 @@ const Todo = () => {
       });
       setdiamond(false);
 
-      console.log("response", response?.data?.todo?.todo);
-      // console.log(response?.data?.todo?.todo);
       setTodoList(response?.data?.todo?.todo);
     } catch (e) {
-      console.log(e);
     }
   }
 
   useEffect(() => {
-    // console.log("get1")
     get();
-    // console.log("todo")
   }, []);
 
   async function delete1(i) {
-    console.log(i);
     let todoindex = todoList[i]._id;
 
-    console.log(todoindex);
 
     setdeleindex(todoindex);
     try {
@@ -147,11 +129,9 @@ const Todo = () => {
 
       setdiamond(false);
 
-      console.log(rese);
 
       get();
     } catch (e) {
-      console.log(e);
     }
   }
 
@@ -159,7 +139,6 @@ const Todo = () => {
     try {
       setdiamond(true);
       let todoindex = todoList[i]._id;
-      console.log(todoindex);
 
       let rese = await axios.post(urle + "markasdone/" + todoindex, {
         markasdone: true,
@@ -171,15 +150,12 @@ const Todo = () => {
       setdiamond(false);
       get();
 
-      console.log("i is", i);
 
-      console.log(rese);
 
       if (rese.message == "rese") {
         usesetstate1(true);
       }
     } catch (e) {
-      console.log(e);
     }
   }
   return (
@@ -213,7 +189,6 @@ const Todo = () => {
                 <div
                   key={i}
                   className="divq"
-                  onClick={(e) => console.log(e.target)}
                   id={item?.markasdone ? "active" : ""}
                 >
                   <div className=" gap-8 flex divq mt-8 p-8  ml-[-10vw] justify-between div">
@@ -228,7 +203,6 @@ const Todo = () => {
                       <button onClick={() => delete1(i)}>Delete</button>
                       {/* <button>markasdone</button> */}
 
-                      {console.log(setstate1)}
                       {item?.markasdone ? (
                         ""
                       ) : (

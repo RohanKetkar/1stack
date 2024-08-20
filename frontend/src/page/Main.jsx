@@ -5,10 +5,10 @@ import axios from "axios";
 
 import {urle} from "../urle"
 const Main = () => {
-  // console.log("axios",axios)
+
 
   async function onclick() {
-    console.log("onclick");
+
     const res1 = await axios.post(// axios.post is send request to backend example
       urle+"signup",
       {
@@ -18,13 +18,13 @@ const Main = () => {
         },
       }
     );
-    console.log(res1);
+
   }
 
   async function onclick1() {
-    console.log("onclick1");
+
 const res1 = await axios.get(urle+"get1")
-console.log(res1)
+
   }
   return (
     <div>

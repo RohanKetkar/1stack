@@ -65,9 +65,7 @@ const [diamond,setdiamond]=useState(false)
 
     async function signup(){
 
-console.log(username,password,email)
 
-console.log("signup")
 
 
 
@@ -81,7 +79,6 @@ setdiamond(true)
                 email:email,
                 password:password,
         })
-console.log(rese?.data)
 
 
 setdiamond(false)

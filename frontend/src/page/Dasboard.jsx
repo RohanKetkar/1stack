@@ -47,14 +47,11 @@ setdiamond(true)
 
 setdiamond(false)
 
-      console.log(rese?.data?.todo?.todo[0].markasdone);
 
       if (rese?.data?.success === true) {
-        console.log("Working");
         for (let i = 0; i < rese?.data?.todo?.todo?.length; i++) {
 
 
-console.log(i)
 
           if (rese?.data?.todo?.todo[i]?.markasdone === true) {
             setcount((prev) => prev + 1);
@@ -65,13 +62,11 @@ console.log(i)
         settodo1(rese?.data?.todo?.todo);
       }
     } catch (e) {
-      console.log(e);
     }
   }
   useEffect(() => {
     get1();
 
-    console.log("render");
   }, []);
 
   return (
@@ -95,7 +90,6 @@ console.log(i)
 
 
 
-{console.log(todo1.length)}
 
             <h1>
               remaining is todo : <span>{todo1.length - count}</span>

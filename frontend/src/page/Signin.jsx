@@ -43,16 +43,13 @@ const Signin = () => {
 
 
 const {cookie,setcookie} = useContext(CookieContext)
-console.log(cookie)
 
 const [diamond,setdiamond]=useState(false)
 
 
     const navigate=useNavigate()
     async function signup(){
-      console.log(urle)
 
-      console.log("https://onestack-2.onrender.com/api/v1/get")
 
 
       setdiamond(true)
@@ -62,14 +59,12 @@ const [diamond,setdiamond]=useState(false)
                 email:email,
                 password:password
         })
-        console.log(rese)
 
 
         setdiamond(false)
 
         
         if(rese?.data?.exituser?.username){
-          console.log("1") 
           localStorage.setItem("username",rese.data.exituser.username)
 
           navigate("/todo")
