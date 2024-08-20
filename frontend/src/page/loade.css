@@ -49,6 +49,7 @@ margin:auto;
 
 font-size:61px;
 margin-top:61px;
+
   }
   .loade::before { 
     content: "";
@@ -262,4 +263,9 @@ display:flex;
     margin-top:10vh;
 }
 
+}
+
+.h1{
+
+    overflow-wrap:anywhere;
 }

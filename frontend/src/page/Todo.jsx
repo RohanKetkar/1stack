@@ -1,109 +1,5 @@
-// import React from "react";
-
-// import Navbar from "./Navbar";
-// import { useState } from "react";
-// import axios from "axios";
-// import { useEffect } from "react";
-
-// import Button from "../component/Button";
-
-// const Todo = () => {
-//   const [todo, settodo] = useState("");
-
-//   const [state, setstate] = useState(true);
-//   const [cookie, setcookie] = useState("");
-//   const [todo1, settodo1] = useState([]);
-
-//   useEffect(() => {
-//     let cookie1 = localStorage.getItem("cookie");
-//     setcookie(cookie1);
-//   }, [cookie]);
-//   async function add() {
-//     try {
-//       console.log(localStorage.getItem("cookie"));
-//       let rese = await axios.post("http://localhost:8000/api/v1/create1", {
-//         todo: todo,
-//         headers: {
-//           Authorization: cookie,
-//         },
-//       });
-//       console.log(rese);
-
-//       setstate(!state);
-//       settodo("");
-//     } catch (e) {
-//       console.log(e);
-//     }
-//   }
-// async function edit(i){
-
-//   try{
-//     // let rese=await axios.put("http://localhost:8000/api/v1/edit/"+i)
-//     console.log(i)
-//     todo1[6] ="rohan"
-//     console.log("todo1[6]",todo1[6])
-//     settodo1((todo)=>console.log(todo[6]))
-//   }catch(e){
-//     console.log(e)}
-// }
-//   async function get() {
-//     try {
-//       let todo1 = await axios.get("http://localhost:8000/api/v1/get1", {
-//         headers: {
-//           Authorization: cookie,
-//         },
-//       });
-//       console.log(todo1?.data?.todo?.todo);
-//       settodo1(todo1?.data?.todo?.todo);
-//     } catch (e) {
-//       console.log(e);
-//     }
-//   }
-
-//   useEffect(() => {
-//     get();
-//   }, [state]);
-//   return (
-//     <div>
-//       <Navbar />
-//       <div className="ml-[30vw] mt-[5vw]">
-
-//         <h1 className="text-[31px] ml-8 mb-8">create is todo</h1>
-
-//         <div>
-//           <input
-//             type="text"
-//             onChange={(e) => settodo(e.target.value)}
-//             value={todo}
-//           />
-//           <label onClick={() => add()} className="bg-white text-black p-1 ml-1">add</label>
-
-//         </div>
-//         <div>
-//           {todo1 &&
-//             todo1?.map((item,i) => {
-//               return <div key={i} className="ml-[-8vw]" onClick={(e)=>console.log(e.target)}>
-//                 <div className="bg-blue-800 gap-8 flex w-[60vw] mt-8 p-8 text-[31px]">
-//                 <label>{i} : </label>
-//                 <h1>{item}</h1>
-//                 <div className="ml-[28vw] gap-8 flex text-[21px]">
-
-//                 <button onClick={(e)=>edit(i)}>edit {i}</button>
-//                 <button>delete</button>
-//                 </div>
-//                 </div>
-
-//                 </div>;
-//             })}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Todo;
-
 import React, { useState, useEffect } from "react";
+
 import axios from "axios";
 import Navbar from "./Navbar";
 import Button from "../component/Button";
@@ -322,7 +218,7 @@ const Todo = () => {
                 >
                   <div className=" gap-8 flex divq mt-8 p-8  ml-[-10vw] justify-between div">
                     <label className="w-[48px]">{i} :</label>
-                    <h1 className=" mr-auto">{item.todoname}</h1>
+                    <h1 className=" mr-auto h1">{item.todoname}</h1>
                     <div className="ml-[-11px]   div1">
                       {item?.markasdone ? (
                         ""

@@ -22,5 +22,5 @@ web.get("/api/v1/get1", (req, res) => {//getting res from axios.get frontend
         message: "get1"
     })
 })
-console.log("index")
+
 web.listen(process.env.PORT);
