@@ -9,6 +9,9 @@ import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar"
+
+import {urle} from "../urle"
+
 const Otp = () => {
   const [otp, setotp] = useState("");
   const [password, setpassword] = useState("");
@@ -29,7 +32,7 @@ const Otp = () => {
     try {
       setdiamond(true);
       let rese = await axios.get(
-        "http://localhost:8000/api/v1/" + "secretedata" + "/" + cookie ||
+        urle + "secretedata" + "/" + cookie ||
           localStorage.getItem("email")
       );
 
