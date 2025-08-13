@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { useEffect } from "react";
 
-import { urle } from "../urle";
+
 import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
