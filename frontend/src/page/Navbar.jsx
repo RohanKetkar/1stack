@@ -85,7 +85,7 @@ toast("logout")
 
     <div className="navediv text-[18px]">
       <Link to="/">
-      <div onClick={()=>navigate("/navigate")}>secret</div>
+      <div onClick={()=>navigate("/navigate")}>Logo</div>
 
       </Link>
       <div className="div bg-black">
